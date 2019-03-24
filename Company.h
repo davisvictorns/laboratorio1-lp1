@@ -15,10 +15,12 @@ class Company{
         int employees_count;
     public:
         Company();
-        Company(string name_, string cnpj_);
+        Company(string&, string&);
 
         string getName();
         string getCnpj();
+        bool addEmployee(string&, string&, float&, Date&);
+        void seeEmployees();
 };
 
 #endif

@@ -14,8 +14,10 @@ class Manager{
     public:
         Manager();
 
-        Company createCompany(string name, string cnpj); //returns the company created
+        Company createCompany(string, string); //returns the company created
         void seeCompanies();
+        string addEmployeeAt(string, string, float, Date, string); //returns true if added
+        void seeEmployeesAt(string, string);
 };
 
 #endif

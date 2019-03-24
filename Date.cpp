@@ -22,7 +22,6 @@ void Date::set_day(const int &day) { Date::day_ = day; };
 void Date::set_month(const int &month) { Date::month_ = month; };
 void Date::set_year(const int &year) { Date::year_ = year; };
 
-
 bool Date::validate() const
 {
     // This function will check the given date is valid or not.
@@ -52,27 +51,52 @@ bool Date::validate() const
     return true;
 };
 
-bool operator == (const Date& date1, const Date& date2){
-    if(date1.day() == date2.day() && date1.month() == date2.month()){
+bool operator==(const Date &date1, const Date &date2)
+{
+    if (date1.day() == date2.day() && date1.month() == date2.month())
+    {
         return true;
     }
     return false;
 }
 
-bool operator != (const Date& date1, const Date& date2){
-    return !(date1==date2);
+bool operator!=(const Date &date1, const Date &date2)
+{
+    return !(date1 == date2);
 }
 
-bool operator < (const Date& date1, const Date& date2){
-    if(date1.year() < date2.year()){ return true; }
-    else if (date1.year() > date2.year()){ return false; }
-    else{
-        if(date1.month() < date2.month()){ return true; }
-        else if (date1.month() > date2.month()){ return false; }
-        else{
-            if(date1.day() < date2.day()){ return true; }
-            else if (date1.day() > date2.day()){ return false; }
-            else{
+bool operator<(const Date &date1, const Date &date2)
+{
+    if (date1.year() < date2.year())
+    {
+        return true;
+    }
+    else if (date1.year() > date2.year())
+    {
+        return false;
+    }
+    else
+    {
+        if (date1.month() < date2.month())
+        {
+            return true;
+        }
+        else if (date1.month() > date2.month())
+        {
+            return false;
+        }
+        else
+        {
+            if (date1.day() < date2.day())
+            {
+                return true;
+            }
+            else if (date1.day() > date2.day())
+            {
+                return false;
+            }
+            else
+            {
                 return false;
             }
         }
@@ -81,35 +105,60 @@ bool operator < (const Date& date1, const Date& date2){
     return false;
 }
 
-bool operator > (const Date& date1, const Date& date2){
-    if(date1==date2){
+bool operator>(const Date &date1, const Date &date2)
+{
+    if (date1 == date2)
+    {
         return false;
-    }else if(date1<date2){
+    }
+    else if (date1 < date2)
+    {
         return false;
     }
 
     return true;
 }
 
-bool operator <= (const Date& date1, const Date& date2){
-    if(date1==date2){
+bool operator<=(const Date &date1, const Date &date2)
+{
+    if (date1 == date2)
+    {
         return true;
     }
-    
-    return (date1<date2);
+
+    return (date1 < date2);
 }
 
-bool operator >= (const Date& date1, const Date& date2){
-    if(date1==date2){
+bool operator>=(const Date &date1, const Date &date2)
+{
+    if (date1 == date2)
+    {
         return true;
     }
-    
-    return (date1>date2);
+
+    return (date1 > date2);
 }
 
+inline long long_date(const Date &d)
+{
+    if (d.validate())
+    {
+        return d.year() * 10000 + d.month() * 100 + d.day();
+    };
+    return 0;
+};
 
-
-
-
+ostream &operator<<(ostream &os, const Date &d)
+{
+    if (d.validate())
+    {
+        os << " " << long_date(d) << " ";
+    }
+    else
+    {
+        os << " invalid date ";
+    };
+    return os;
+}
 
 // Some credits to: http://finance.bi.no/~bernt/gcc_prog/empirical/doc_date.pdf
