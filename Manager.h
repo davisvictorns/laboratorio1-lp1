@@ -18,6 +18,7 @@ class Manager{
         void seeCompanies();
         string addEmployeeAt(string, string, float, Date, string); //returns true if added
         void seeEmployeesAt(string, string);
+        void riseEmployeesWageAt(string, float);
 };
 
 #endif

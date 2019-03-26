@@ -15,7 +15,7 @@ string Company::getCnpj(){
 }
 
 bool Company::addEmployee(string& name_, string& cpf_, float& wage_, Date& admission_date_){
-    for(int i = 0; i < employees.size(); i++)
+    for(int i = 0; i < (int) employees.size(); i++)
     {
         if(employees[i].getCpf() == cpf_){
             return false;
@@ -30,9 +30,9 @@ bool Company::addEmployee(string& name_, string& cpf_, float& wage_, Date& admis
 }
 
 void Company::seeEmployees(){
-    for(int i = 0; i < employees.size(); i++)
+    for(int i = 0; i < (int) employees.size(); i++)
     {
-        cout<<employees[i].getName()<<"("<<employees[i].getCpf()<<", "<<employees[i].getAdmissionDate()<<")"<<" | ";
+        cout<<employees[i].getName()<<"("<<employees[i].getCpf()<<", "<<employees[i].getWage()<<", "<<employees[i].getAdmissionDate()<<")"<<" | ";
     }
 
     if(employees_count == 0){
@@ -40,4 +40,13 @@ void Company::seeEmployees(){
     }else{
         cout<<employees_count<<endl;
     }
+}
+
+void Company::riseEmployeesWage(float& amount){
+    for(int i = 0; i < (int) employees.size(); i++)
+    {
+        employees[i].riseWage(amount);
+    }
+
+    Company::seeEmployees();
 }

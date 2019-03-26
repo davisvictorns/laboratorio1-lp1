@@ -25,5 +25,7 @@ int main(int argc, char const *argv[])
     control.seeEmployeesAt("", "5345");
     control.seeEmployeesAt("Amazon", "7547");
     
+    control.riseEmployeesWageAt("7547", 40.0);
+    
     return 0;
 }

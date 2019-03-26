@@ -143,7 +143,7 @@ inline long long_date(const Date &d)
 {
     if (d.validate())
     {
-        return d.year() * 10000 + d.month() * 100 + d.day();
+        return d.day() * 1000000 + d.month() * 10000 + d.year();
     };
     return 0;
 };
@@ -152,7 +152,7 @@ ostream &operator<<(ostream &os, const Date &d)
 {
     if (d.validate())
     {
-        os << " " << long_date(d) << " ";
+        os << d.day() << "/" << d.month() << "/" << d.year();
     }
     else
     {

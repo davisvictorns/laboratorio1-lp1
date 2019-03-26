@@ -13,7 +13,7 @@ Company Manager::createCompany(string name, string cnpj){
 }
 
 void Manager::seeCompanies(){
-    for(int i = 0; i < companies.size(); i++)
+    for(int i = 0; i < (int) companies.size(); i++)
     {
         cout<<companies[i].getName()<<"("<<companies[i].getCnpj()<<")"<<" | ";
     }
@@ -22,7 +22,7 @@ void Manager::seeCompanies(){
 
 string Manager::addEmployeeAt(string name_, string cpf_, float wage_, Date admission_date_, string company_cnpj){
 
-    for(int i = 0; i < companies.size(); i++)
+    for(int i = 0; i < (int) companies.size(); i++)
     {
         if(companies[i].getCnpj() == company_cnpj){
             if(companies[i].addEmployee(name_, cpf_, wage_, admission_date_)){
@@ -38,11 +38,12 @@ string Manager::addEmployeeAt(string name_, string cpf_, float wage_, Date admis
 
 void Manager::seeEmployeesAt(string company_name, string company_cnpj){
     int multiple_company = 0;
-    for(int i = 0; i < companies.size(); i++)
+    for(int i = 0; i < (int) companies.size(); i++)
     {
         if(company_cnpj != ""){
             if(companies[i].getCnpj() == company_cnpj){
                 companies[i].seeEmployees();
+                multiple_company++;
             }
         }else{         
             if(company_name != ""){
@@ -57,7 +58,21 @@ void Manager::seeEmployeesAt(string company_name, string company_cnpj){
     }
     if(multiple_company > 1){
         cout<<"Was found "<<multiple_company<<" companies with this name."<<endl;
+    }else if(multiple_company == 0){
+        cout<<"Company not found."<<endl;
     }
 }
 
-
+void Manager::riseEmployeesWageAt(string company_cnpj, float amount){
+    int was_found = 0;
+    for(int i = 0; i < (int) companies.size(); i++)
+    {
+        if(companies[i].getCnpj() == company_cnpj){
+            companies[i].riseEmployeesWage(amount);
+            was_found++;
+        }
+    }
+    if(was_found == 0){
+        cout<<"Company not found."<<endl;        
+    }
+}

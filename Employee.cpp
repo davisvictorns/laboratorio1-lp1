@@ -22,6 +22,14 @@ string Employee::getCpf(){
     return cpf;
 }
 
+float Employee::getWage(){
+    return wage;
+}
+
 Date Employee::getAdmissionDate(){
     return admission_date;
+}
+
+void Employee::riseWage(float& amount){
+    wage = wage * (1+(amount/100));
 }

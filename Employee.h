@@ -17,8 +17,9 @@ class Employee{
 
         string getName();
         string getCpf();
+        float getWage();
         Date getAdmissionDate();
-    
+        void riseWage(float&);
 };
 
 bool operator == (const string&, const string&);

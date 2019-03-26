@@ -21,6 +21,7 @@ class Company{
         string getCnpj();
         bool addEmployee(string&, string&, float&, Date&);
         void seeEmployees();
+        void riseEmployeesWage(float&);
 };
 
 #endif
