@@ -50,3 +50,30 @@ void Company::riseEmployeesWage(float& amount){
 
     Company::seeEmployees();
 }
+
+void Company::getEmployeesAdmittedDaysAgo(int& days){
+    time_t t = time(0);   // get time now
+    tm* now = localtime(&t);
+    Date deadline_date(now->tm_mday, now->tm_mon + 1, now->tm_year + 1900);
+    int was_found = 0;
+    string admitted_employees = "";
+
+    for(int i = 0; i < (int) employees.size(); i++)
+    {
+        if(deadline_date-employees[i].getAdmissionDate() <= days && deadline_date-employees[i].getAdmissionDate() >= 0){
+            admitted_employees = admitted_employees + employees[i].getName() + "(" + employees[i].getCpf() + "), ";
+            
+            was_found++;
+        }
+    }
+    
+    if(was_found == 0){
+        cout<< name <<" don't have employees admitted at those days."<<endl;
+    }else{
+        cout<< name <<" have admitted:"<<endl<<admitted_employees<<"at the past "<<days<<" days."<<endl;
+    }
+}
+
+int Company::getAmountEmplyees(){
+    return employees_count;
+}

@@ -3,6 +3,8 @@
 
 #include <string>
 #include <vector>
+#include <ctime>
+#include <iostream>
 #include "Date.h"
 #include "Employee.h"
 using namespace std;
@@ -22,6 +24,8 @@ class Company{
         bool addEmployee(string&, string&, float&, Date&);
         void seeEmployees();
         void riseEmployeesWage(float&);
+        void getEmployeesAdmittedDaysAgo(int&);
+        int getAmountEmplyees();
 };
 
 #endif

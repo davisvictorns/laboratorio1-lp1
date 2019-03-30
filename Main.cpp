@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
     control.createCompany("Google", "5345");
     control.createCompany("Amazon", "7547");
 
-    Date AD1(20,6,2018);
+    Date AD1(1,3,2019);
     Date AD2(10,12,2018);
     Date AD3(10,6,2017);
     cout<<control.addEmployeeAt("Davis", "8282", 100000.0, AD1, "7547")<<endl;
@@ -26,6 +26,8 @@ int main(int argc, char const *argv[])
     control.seeEmployeesAt("Amazon", "7547");
     
     control.riseEmployeesWageAt("7547", 40.0);
+    control.employeesAdmittedDaysAgo("7547", 90);
+    control.meanEmployeesByCompany();
     
     return 0;
 }

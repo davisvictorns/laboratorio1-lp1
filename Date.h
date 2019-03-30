@@ -30,6 +30,7 @@ bool operator < (const Date&, const Date&);
 bool operator > (const Date&, const Date&);
 bool operator <= (const Date&, const Date&);
 bool operator >= (const Date&, const Date&);
+int operator - (const Date&, const Date&);
 
 ostream& operator << (ostream& os, const Date& d);
 

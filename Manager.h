@@ -14,11 +14,13 @@ class Manager{
     public:
         Manager();
 
-        Company createCompany(string, string); //returns the company created
+        Company createCompany(string name, string cnpj); //returns the company created
         void seeCompanies();
-        string addEmployeeAt(string, string, float, Date, string); //returns true if added
-        void seeEmployeesAt(string, string);
-        void riseEmployeesWageAt(string, float);
+        string addEmployeeAt(string name_, string cpf_, float wage_, Date admission_date_, string company_cnpj); //returns true if added
+        void seeEmployeesAt(string company_name, string company_cnpj);
+        void riseEmployeesWageAt(string company_cnpj, float amount);
+        void employeesAdmittedDaysAgo(string company_cnpj, int days);
+        void meanEmployeesByCompany();
 };
 
 #endif

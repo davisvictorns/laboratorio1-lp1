@@ -139,11 +139,11 @@ bool operator>=(const Date &date1, const Date &date2)
     return (date1 > date2);
 }
 
-inline long long_date(const Date &d)
+int date_days(const Date &d)
 {
     if (d.validate())
     {
-        return d.day() * 1000000 + d.month() * 10000 + d.year();
+        return d.year()*365 + d.month()*30 + d.day();
     };
     return 0;
 };
@@ -160,5 +160,21 @@ ostream &operator<<(ostream &os, const Date &d)
     };
     return os;
 }
+
+int operator-(const Date &date1, const Date &date2)
+{
+    if (date1 == date2)
+    {
+        return 0;
+    }
+
+    int days_d1 = date_days(date1);
+    int days_d2 = date_days(date2);
+
+    int date_diff = days_d1 - days_d2;
+
+    return date_diff;
+}
+
 
 // Some credits to: http://finance.bi.no/~bernt/gcc_prog/empirical/doc_date.pdf
